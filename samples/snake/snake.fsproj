@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="content/*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="**/*.mgcb" />
+    <PackageReference Include="Elmish" Version="2.0.3" />
+    <None Include="readme.md" />
+    <Compile Include="Constants.fs" />
+    <Compile Include="PlayScreen.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <!-- Processed by content pipeline on build into xnb files -->
+  <ItemGroup>
+    <ProjectReference Include="../../src/Xelmish.fsproj" />
+    <!-- Required to trigger the content build -->
+    <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.4" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+  </ItemGroup>
+  <Import Project=".paket\Paket.Restore.targets" />
+</Project>
