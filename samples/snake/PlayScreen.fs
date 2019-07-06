@@ -61,8 +61,9 @@ let advanceSnake model =
     let snakeLocs =
         match model.snake.locs with
         | x::xs ->
-            advanceSnakeImpl (x::xs) [moveInDir x model.snake.dir]
+            advanceSnakeImpl xs [moveInDir x model.snake.dir]
         | _ -> model.snake.locs
+    printfn "snake length = %i" (List.length snakeLocs)
     let snake = {locs=snakeLocs; dir=model.snake.dir}
     {model with snake=snake}
 
